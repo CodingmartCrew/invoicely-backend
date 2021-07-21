@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.invoicely.invoice.model.Invoice;
@@ -23,12 +22,12 @@ public class InvoiceController {
 	
 	// save invoice
 	@PostMapping("/save")
-	private @ResponseBody Invoice createInvoice(@RequestBody Invoice invoice) {
+	private Invoice createInvoice(@RequestBody Invoice invoice) {
 		return this.invoiceRepository.save(invoice);
 	}
 	// get all invoices
 	@GetMapping("/all")
-	private @ResponseBody List<Invoice> getAllInvoices() {
+	private List<Invoice> getAllInvoices() {
 		return this.invoiceRepository.findAll();
 	}
 	// get invoice by id
@@ -38,8 +37,8 @@ public class InvoiceController {
 		return invoice;
 	}
 	// get invoice by email
-	@GetMapping("/findbymail")
-	private Invoice getInvoiceByEmail(@RequestBody Invoice invoice) {
+	@PostMapping("/findbymail")
+	private Invoice getInvoiceByCreator(@RequestBody Invoice invoice) {
 		return this.invoiceRepository.findByCreatedBy(invoice.getCreatedby());
 	}
 	

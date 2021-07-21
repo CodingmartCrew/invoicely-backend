@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "invoices")
+@Table( name = "invoice_details")
 public class Invoice {
 
 	@Id
@@ -44,7 +44,7 @@ public class Invoice {
 	private String clientname;
 	@Column(name= "maincontent")
 	private String maincontent;
-	@Column(name= "invoice_items")
+	@Column(name= "invoice_item", length=10485760)
 	private String invoice_items;
 	@Column(name= "footcontent")
 	private String footcontent;
