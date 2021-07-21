@@ -38,8 +38,8 @@ public class InvoiceController {
 	}
 	// get invoice by email
 	@PostMapping("/findbymail")
-	private Invoice getInvoiceByCreator(@RequestBody Invoice invoice) {
-		return this.invoiceRepository.findByCreatedBy(invoice.getCreatedby());
+	private List<Invoice> getInvoiceByCreator(@RequestBody Invoice invoice) {
+		return this.invoiceRepository.findAllByCreatedby(invoice.getCreatedby());
 	}
 	
 }

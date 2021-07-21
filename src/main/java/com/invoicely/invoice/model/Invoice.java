@@ -5,10 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "invoice_details")
+@Table( name = "invoices_details")
 public class Invoice {
 
 	@Id
@@ -42,10 +43,16 @@ public class Invoice {
 	private String attender;
 	@Column(name= "clientname")
 	private String clientname;
+	@Lob
 	@Column(name= "maincontent")
 	private String maincontent;
-	@Column(name= "invoice_item", length=10485760)
+	
+	@Lob
+//	@Column(name="invoicetable_items", length=5096)
+	@Column(length=10485760)
 	private String invoice_items;
+	
+	@Lob
 	@Column(name= "footcontent")
 	private String footcontent;
 	 
